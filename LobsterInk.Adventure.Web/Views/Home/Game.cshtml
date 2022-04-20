@@ -1,0 +1,24 @@
+﻿@model GameViewModel
+@{
+    ViewData["Title"] = "Game";
+}
+
+<div class="text-center">
+    <h1 class="display-4">...game step...</h1>
+
+    <h2>@Model.Node.Message</h2>
+
+    @if (Model.Node.Children != null)
+    {
+        <ol style="display: inline-block">
+            @foreach (var child in Model.Node.Children)
+            {
+                <li>@Html.ActionLink(child.Details, "Game", "Home", new { adventureId = Model.AdventureId, nextNodeId = child.Id })</li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p>If you wanna start over @Html.ActionLink("click here", "ResetSession", "Home", new { adventureId = Model.AdventureId })</p>
+    }
+</div>

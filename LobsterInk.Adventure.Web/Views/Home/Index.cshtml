@@ -1,0 +1,16 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h2>Take an Adventure from the list below</h2>
+
+    <ol style="display: inline-block">
+        @foreach (var adventure in Model.Adventures)
+        {
+            <li>@Html.ActionLink(adventure.Name, "Game", "Home", new { adventureId = adventure.Id, nextNodeId = string.Empty })</li>
+        }
+    </ol>
+</div>
