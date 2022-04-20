@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  webapi-service:
+    image: api-image:latest
+    ports:
+      - 8080:80
+      - 8081:443
+    depends_on:
+      - sql-service
+    environment:
+      ASPNETCORE_URLS: "http://+"
+      ASPNETCORE_ENVIRONMENT: "Development"
+  sql-service:
+    container_name: sql_container
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1433:1433
+    environment:
+      SA_PASSWORD: "@Passw0rd"
+      ACCEPT_EULA: "Y"
