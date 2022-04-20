@@ -1,7 +1,16 @@
 version: "3.9"
 services:
+  web-service:
+    image: web_image:latest
+    ports:
+      - 80:80
+    depends_on:
+      - webapi-service
+    environment:
+      ASPNETCORE_URLS: "http://+"
+      ASPNETCORE_ENVIRONMENT: "Development"
   webapi-service:
-    image: api-image:latest
+    image: api_image:latest
     ports:
       - 8080:80
       - 8081:443

@@ -5,7 +5,9 @@ namespace LobsterInk.Adventure.Web.Services
 {
     public class AdventureService
     {
-        private const string _apiBaseUrl = "http://localhost:5081";
+        private const string _apiBaseUrl = "http://webapi-service";
+        //private const string _apiBaseUrl = "http://localhost:5081";
+
         private readonly WebHelperService _webHelperService;
 
         public AdventureService()
