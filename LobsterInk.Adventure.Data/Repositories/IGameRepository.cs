@@ -9,5 +9,7 @@ namespace LobsterInk.Adventure.Data.Repositories
         Game? Get(string sessionId);
 
         Node? GetNextStep(string sessionId, string answerId);
+
+        IEnumerable<GameStep>? GetSteps(string gameId);
     }
 }

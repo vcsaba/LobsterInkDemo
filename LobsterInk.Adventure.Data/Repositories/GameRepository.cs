@@ -109,5 +109,17 @@ namespace LobsterInk.Adventure.Data.Repositories
             var node = _mapper.Map<Node>(nodeEntity);
             return node;
         }
+
+        public IEnumerable<GameStep>? GetSteps(string gameId)
+        {
+            var entities = _context.GameSteps.Where(y => y.GameId.Equals(gameId));
+            if (entities == null)
+            {
+                _logger.LogWarning($"'{nameof(GameRepository)}', Parameter '{nameof(gameId)}' in '{nameof(GetSteps)}' method: entity can not be found!");
+                return null;
+            }
+
+            return entities.Select(y => _mapper.Map<GameStep>(y));
+        }
     }
 }

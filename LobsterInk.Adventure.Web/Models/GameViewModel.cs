@@ -6,6 +6,8 @@ namespace LobsterInk.Adventure.Web.Models
     {
         public string AdventureId { get; set; }
 
+        public string SessionId { get; set; }
+
         public Node Node { get; set; }
     }
 }

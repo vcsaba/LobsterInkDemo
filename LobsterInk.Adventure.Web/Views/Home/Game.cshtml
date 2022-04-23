@@ -19,6 +19,8 @@
     }
     else
     {
+        <p>If you wanna see the decision tree @Html.ActionLink("click here", "Index", "Tree", new { adventureId = Model.AdventureId, sessionId = Model.SessionId })</p>
+
         <p>If you wanna start over @Html.ActionLink("click here", "ResetSession", "Home", new { adventureId = Model.AdventureId })</p>
     }
 </div>

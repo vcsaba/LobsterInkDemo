@@ -50,6 +50,21 @@ namespace LobsterInk.Adventure.Api.Controllers
             return Ok(adventure);
         }
 
+        [HttpGet("{id}/{sessionId}")]
+        public async Task<ActionResult<AdventureModel>> Get([Required] string id, string sessionId)
+        {
+            var adventure = await _adventureService.GetAdventureAsync(id, sessionId);
+            if (adventure == null)
+            {
+                string errorMessage = $"Adventure cannot be found with ID '{id}'!";
+                _logger.LogWarning(errorMessage);
+
+                return NotFound(new { Error = errorMessage });
+            }
+
+            return Ok(adventure);
+        }
+
         [HttpPut]
         public async Task<IActionResult> Update(AdventureModel adventure)
         {

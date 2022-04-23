@@ -8,6 +8,8 @@ namespace LobsterInk.Adventure.Business.Services
 
         Task<AdventureModel> GetAdventureAsync(string id);
 
+        Task<AdventureModel> GetAdventureAsync(string id, string sessionId);
+
         Task<IEnumerable<AdventureModel>> ListAdventuresAsync();
 
         Task<AdventureModel> UpdateAdventureAsync(AdventureModel adventure);
