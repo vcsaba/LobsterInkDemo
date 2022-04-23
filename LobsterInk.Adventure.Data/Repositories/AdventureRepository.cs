@@ -2,6 +2,7 @@
 using LobsterInk.Adventure.Data.Database;
 using LobsterInk.Adventure.Data.Entities;
 using LobsterInk.Adventure.Data.Factories;
+using LobsterInk.Adventure.Shared.Models;
 using Microsoft.Extensions.Logging;
 using AdventureModel = LobsterInk.Adventure.Shared.Models.Adventure;
 
@@ -11,10 +12,10 @@ namespace LobsterInk.Adventure.Data.Repositories
     {
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
-        private readonly IRepositoryFactory _repositoryFactory;
+        private readonly INodeRepositoryFactory _repositoryFactory;
         private readonly LobsterInkContext _context;
 
-        public AdventureRepository(LobsterInkContext context, IRepositoryFactory repositoryFactory, IMapper mapper, ILoggerFactory loggerFactory)
+        public AdventureRepository(LobsterInkContext context, INodeRepositoryFactory repositoryFactory, IMapper mapper, ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger<AdventureRepository>();
 
@@ -49,7 +50,7 @@ namespace LobsterInk.Adventure.Data.Repositories
             }
 
             var adventure = _mapper.Map<AdventureModel>(entity);
-            GetStartingNode(adventure);
+            GetAllNode(adventure);
 
             return adventure;
         }
@@ -105,6 +106,30 @@ namespace LobsterInk.Adventure.Data.Repositories
 
             var startingNode = _repositoryFactory.CreateRepository().Get(adventure.StartingNodeId);
             adventure.StartingNode = startingNode;
+        }
+
+        private void GetAllNode(AdventureModel adventure)
+        {
+            if (string.IsNullOrEmpty(adventure?.StartingNodeId))
+            {
+                return;
+            }
+
+            adventure.StartingNode = GetNode(adventure.StartingNodeId);
+        }
+
+        private Node GetNode(string nodeId)
+        {
+            var node = _repositoryFactory.CreateRepository().Get(nodeId);
+            if (node.Children != null)
+            {
+                for (int i = 0; i < node.Children.Count; i++)
+                {
+                    node.Children[i] = GetNode(node.Children[i].Id);
+                }
+            }
+
+            return node;
         }
     }
 }

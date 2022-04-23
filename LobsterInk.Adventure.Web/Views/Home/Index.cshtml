@@ -10,7 +10,13 @@
     <ol style="display: inline-block">
         @foreach (var adventure in Model.Adventures)
         {
-            <li>@Html.ActionLink(adventure.Name, "Game", "Home", new { adventureId = adventure.Id, nextNodeId = string.Empty })</li>
+            <li>
+                <div>
+                    <div style="">@adventure.Name</div>
+                    <div style="">@Html.ActionLink("Start", "Game", "Home", new { adventureId = adventure.Id, nextNodeId = string.Empty })</div>
+                    <div style="">@Html.ActionLink("Tree", "Index", "Tree", new { adventureId = adventure.Id })</div>
+                </div>
+            </li>
         }
     </ol>
 </div>

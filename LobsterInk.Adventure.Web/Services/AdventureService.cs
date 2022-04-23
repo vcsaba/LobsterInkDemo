@@ -5,8 +5,8 @@ namespace LobsterInk.Adventure.Web.Services
 {
     public class AdventureService
     {
-        private const string _apiBaseUrl = "http://webapi-service";
-        //private const string _apiBaseUrl = "http://localhost:5081";
+        //private const string _apiBaseUrl = "http://webapi-service";
+        private const string _apiBaseUrl = "http://localhost:5081";
 
         private readonly WebHelperService _webHelperService;
 
@@ -21,6 +21,17 @@ namespace LobsterInk.Adventure.Web.Services
             var viewModel = new IndexViewModel
             {
                 Adventures = adventures
+            };
+
+            return viewModel;
+        }
+
+        public TreeIndexViewModel GetTreeIndexViewModel(string adventureId, string sessionId)
+        {
+            var adventure = _webHelperService.Get<Shared.Models.Adventure>($"{_apiBaseUrl}/api/adventure/{adventureId}");
+            var viewModel = new TreeIndexViewModel
+            {
+                Adventure = adventure
             };
 
             return viewModel;

@@ -19,7 +19,7 @@ namespace LobsterInk.Adventure.Tests.Business.Services
             Mock<INodeRepository<Node>> nodeRepository = new Mock<INodeRepository<Node>>();
             nodeRepository.Setup(y => y.Add(It.IsAny<Node>())).Returns(expectedResult);
 
-            Mock<IRepositoryFactory> repositoryFactoryMock = new Mock<IRepositoryFactory>();
+            Mock<INodeRepositoryFactory> repositoryFactoryMock = new Mock<INodeRepositoryFactory>();
             repositoryFactoryMock.Setup(y => y.CreateRepository())
                 .Returns(nodeRepository.Object);
 
@@ -43,7 +43,7 @@ namespace LobsterInk.Adventure.Tests.Business.Services
             Mock<INodeRepository<Node>> nodeRepository = new Mock<INodeRepository<Node>>();
             nodeRepository.Setup(y => y.Get(It.Is<string>(y => expectedResult.Id.Equals(y)))).Returns(expectedResult);
 
-            Mock<IRepositoryFactory> repositoryFactoryMock = new Mock<IRepositoryFactory>();
+            Mock<INodeRepositoryFactory> repositoryFactoryMock = new Mock<INodeRepositoryFactory>();
             repositoryFactoryMock.Setup(y => y.CreateRepository())
                 .Returns(nodeRepository.Object);
 
@@ -67,7 +67,7 @@ namespace LobsterInk.Adventure.Tests.Business.Services
             Mock<INodeRepository<Node>> nodeRepository = new Mock<INodeRepository<Node>>();
             nodeRepository.Setup(y => y.Update(It.IsAny<Node>())).Returns(expectedResult);
 
-            Mock<IRepositoryFactory> repositoryFactoryMock = new Mock<IRepositoryFactory>();
+            Mock<INodeRepositoryFactory> repositoryFactoryMock = new Mock<INodeRepositoryFactory>();
             repositoryFactoryMock.Setup(y => y.CreateRepository())
                 .Returns(nodeRepository.Object);
 
@@ -89,7 +89,7 @@ namespace LobsterInk.Adventure.Tests.Business.Services
             Mock<INodeRepository<Node>> nodeRepository = new Mock<INodeRepository<Node>>();
             nodeRepository.Setup(y => y.Delete(It.IsAny<string>())).Callback(() => { });
 
-            Mock<IRepositoryFactory> repositoryFactoryMock = new Mock<IRepositoryFactory>();
+            Mock<INodeRepositoryFactory> repositoryFactoryMock = new Mock<INodeRepositoryFactory>();
             repositoryFactoryMock.Setup(y => y.CreateRepository())
                 .Returns(nodeRepository.Object);
 

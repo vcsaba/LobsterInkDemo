@@ -13,5 +13,7 @@
         public Node? Parent { get; set; }
 
         public List<Node>? Children { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

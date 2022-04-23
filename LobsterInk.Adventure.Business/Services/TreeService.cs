@@ -5,9 +5,9 @@ namespace LobsterInk.Adventure.Business.Services
 {
     public class TreeService : ITreeService
     {
-        private readonly IRepositoryFactory _repositoryFactory;
+        private readonly INodeRepositoryFactory _repositoryFactory;
 
-        public TreeService(IRepositoryFactory repositoryFactory)
+        public TreeService(INodeRepositoryFactory repositoryFactory)
         {
             _repositoryFactory = repositoryFactory;
         }

@@ -39,8 +39,8 @@ builder.Services.AddControllers()
 builder.Services.AddRouting(opt => opt.LowercaseUrls = true);
 builder.Services.AddLogging();
 builder.Services.AddBusinessServices();
-builder.Services.AddDbContext<LobsterInkContext>(opts => opts.UseSqlServer("Data Source=sql-service,1433;Initial Catalog=LobsterInk;Persist Security Info=True;User ID=sa;Password=@Passw0rd"), ServiceLifetime.Transient, ServiceLifetime.Transient);
-//builder.Services.AddDbContext<LobsterInkContext>(opts => opts.UseSqlServer(@$"Data Source=LAPTOP-V8DIRJ4T\SQLEXPRESS;Initial Catalog=LobsterInk;Integrated Security=True"), ServiceLifetime.Transient, ServiceLifetime.Transient);
+//builder.Services.AddDbContext<LobsterInkContext>(opts => opts.UseSqlServer("Data Source=sql-service,1433;Initial Catalog=LobsterInk;Persist Security Info=True;User ID=sa;Password=@Passw0rd"), ServiceLifetime.Transient, ServiceLifetime.Transient);
+builder.Services.AddDbContext<LobsterInkContext>(opts => opts.UseSqlServer(@$"Data Source=LAPTOP-V8DIRJ4T\SQLEXPRESS;Initial Catalog=LobsterInk;Integrated Security=True"), ServiceLifetime.Transient, ServiceLifetime.Transient);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

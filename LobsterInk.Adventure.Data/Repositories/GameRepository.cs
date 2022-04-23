@@ -11,10 +11,10 @@ namespace LobsterInk.Adventure.Data.Repositories
     {
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
-        private readonly IRepositoryFactory _repositoryFactory;
+        private readonly INodeRepositoryFactory _repositoryFactory;
         private readonly LobsterInkContext _context;
 
-        public GameRepository(LobsterInkContext context, IRepositoryFactory repositoryFactory, IMapper mapper, ILoggerFactory loggerFactory)
+        public GameRepository(LobsterInkContext context, INodeRepositoryFactory repositoryFactory, IMapper mapper, ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger<GameRepository>();
 

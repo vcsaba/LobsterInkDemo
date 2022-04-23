@@ -18,7 +18,7 @@ namespace LobsterInk.Adventure.Api.Extensions
             services.AddScoped<IMaterializedPathRepository, MaterializedPathRepository>();
             services.AddScoped<INestedSetRepository, NestedSetRepository>();
 
-            services.AddScoped<IRepositoryFactory, RepositoryFactory>();
+            services.AddScoped<INodeRepositoryFactory, NodeRepositoryFactory>();
 
             services.AddScoped<IAdventureRepository, AdventureRepository>();
             services.AddScoped<IGameRepository, GameRepository>();

@@ -4,9 +4,9 @@ using LobsterInk.Adventure.Shared.Models;
 namespace LobsterInk.Adventure.Data.Factories
 {
     /// <summary>
-    /// Public interface for <see cref="IRepositoryFactory"/>.
+    /// Public interface for <see cref="INodeRepositoryFactory"/>.
     /// </summary>
-    public interface IRepositoryFactory
+    public interface INodeRepositoryFactory
     {
         /// <summary>
         /// Creates the appropriate node repository.

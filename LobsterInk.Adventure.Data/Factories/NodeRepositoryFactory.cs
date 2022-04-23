@@ -5,14 +5,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace LobsterInk.Adventure.Data.Factories
 {
-    public class RepositoryFactory : IRepositoryFactory
+    public class NodeRepositoryFactory : INodeRepositoryFactory
     {
         private readonly IConfiguration _configuration;
         private readonly IParentAssociationNodeRepository _parentAssociationNodeRepository;
         private readonly IMaterializedPathRepository _materializedPathRepository;
         private readonly INestedSetRepository _nestedSetRepository;
 
-        public RepositoryFactory(IConfiguration configuration, IParentAssociationNodeRepository parentAssociationNodeRepository, IMaterializedPathRepository materializedPathRepository, INestedSetRepository nestedSetRepository)
+        public NodeRepositoryFactory(IConfiguration configuration, IParentAssociationNodeRepository parentAssociationNodeRepository, IMaterializedPathRepository materializedPathRepository, INestedSetRepository nestedSetRepository)
         {
             _configuration = configuration;
             _nestedSetRepository = nestedSetRepository;
